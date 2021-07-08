@@ -6,16 +6,26 @@ IPFS Gateway Tools
 
 This toolkit contains helper functions for working with IPFS gateway URLs and transforming them as desired.
 
+This package comes with a distributions for the browser and for NodeJS. Take care to ensure you are importing or requiring in the right version. 
+
 ## Installation
 ```
 npm install --save @pinata/ipfs-gateway-tools
 ```
 
-## Setup
+## Browser Setup
 To require this in your project simply include the library at the top of your file like so:
 
 ```javascript
-const ipfsGatewayTools = require('@pinata/ipfs-gateway-tools');
+import IPFSGatewayTools from '@pinata/ipfs-gateway-tools/dist/browser';
+const gatewayTools = new IPFSGatewayTools();
+```
+
+## NodeJS Setup
+
+```javascript
+const IPFSGatewayTools = require('@pinata/ipfs-gateway-tools/dist/node');
+const gatewayTools = new IPFSGatewayTools();
 ```
 
 ## Usage
