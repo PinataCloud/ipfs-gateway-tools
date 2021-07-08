@@ -1,4 +1,4 @@
-import isIPFS from "is-ipfs";
+const isIPFS = require('is-ipfs');
 
 class IpfsGatewayTools {
   constructor() {}
