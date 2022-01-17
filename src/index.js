@@ -7,7 +7,7 @@ class IpfsGatewayTools {
     if (typeof url !== "string") {
       throw new Error("url is not string");
     }
-    const splitUrl = url.split("/");
+    const splitUrl = new URL(url).pathname.split("/");
     for (const split of splitUrl) {
       if (isIPFS.cid(split)) {
         return {
