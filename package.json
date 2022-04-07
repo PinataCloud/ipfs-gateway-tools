@@ -1,10 +1,13 @@
 {
   "name": "@pinata/ipfs-gateway-tools",
-  "version": "1.2.1",
+  "version": "1.2.0",
   "description": "Toolkit for working with IPFS Gateways and CIDs",
   "scripts": {
-    "start": "webpack serve",   
+    "start": "webpack serve",
     "version": "auto-changelog -p && git add CHANGELOG.md",
+    "changelog": "auto-changelog -u && git add CHANGELOG.md",
+    "lint:check": "prettier --check .",
+    "lint:fix": "prettier --write \"**/*.{js,jsx,json,md,html,css,less,scss}\"",
     "test": "./node_modules/.bin/jest --coverage --env=node",
     "prepare": "npm run build",
     "trypublish": "npm publish || true",
@@ -27,6 +30,11 @@
     "gateway",
     "pinata"
   ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test && npm run lint:fix"
+    }
+  },
   "devDependencies": {
     "@babel/cli": "^7.13.16",
     "@babel/core": "^7.13.16",
@@ -41,8 +49,9 @@
     "css-loader": "^5.2.4",
     "eslint": "^7.24.0",
     "file-loader": "^6.2.0",
+    "husky": "^4.3.8",
     "jest": "^26.6.3",
-    "prettier": "^2.2.1",
+    "prettier": "^2.6.2",
     "prettier-webpack-plugin": "^1.2.0",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.1.1",
