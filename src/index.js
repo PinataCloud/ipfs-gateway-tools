@@ -37,10 +37,6 @@ class IpfsGatewayTools {
       throw new Error("url does not contain CID");
     }
 
-    if(isIPFS.cid(results.cid)) {
-      return `${desiredGatewayPrefix}/ipfs/${results.cid}`
-    }
-
     const splitUrl = sourceUrl.split(results.cid);
     //case 1 - the ipfs://cid path
     if (sourceUrl.includes(`ipfs://${results.cid}`)) {
