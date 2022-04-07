@@ -15,13 +15,20 @@ describe("containsCID function testing", () => {
     });
   });
   test("returns true if CID", () => {
-    const results = ipfsGatewayTools.containsCID(
-      "ipfs://QmYjtig7VJQ6XsnUjqqJvj7QaMcCAwtrgNdahSiFofrE7o"
-    );
-    expect(results).toEqual({
+    const CIDToLookFor = "QmYjtig7VJQ6XsnUjqqJvj7QaMcCAwtrgNdahSiFofrE7o";
+    const expectedResult = {
       containsCid: true,
-      cid: "QmYjtig7VJQ6XsnUjqqJvj7QaMcCAwtrgNdahSiFofrE7o",
-    });
+      cid: CIDToLookFor,
+    };
+    expect(ipfsGatewayTools.containsCID(`ipfs://${CIDToLookFor}`)).toEqual(
+      expectedResult
+    );
+
+    expect(
+      ipfsGatewayTools.containsCID(
+        `https://ipfs.io/ipfs/${CIDToLookFor}?filename=IMG_20210917_135500_HDR`
+      )
+    ).toEqual(expectedResult);
   });
 });
 
