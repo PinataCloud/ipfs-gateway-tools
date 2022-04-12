@@ -1,0 +1,13 @@
+.*
+dist/**
+build/**
+node.js
+coverage/**
+package.json
+package-lock.json
+webpack.config.js
+babel.config.js
+browser.js
+*.xml
+*.html
+*.info

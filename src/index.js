@@ -1,4 +1,4 @@
-const isIPFS = require('is-ipfs');
+const isIPFS = require("is-ipfs");
 
 class IpfsGatewayTools {
   constructor() {}
@@ -7,7 +7,7 @@ class IpfsGatewayTools {
     if (typeof url !== "string") {
       throw new Error("url is not string");
     }
-    const splitUrl = url.split("/");    
+    const splitUrl = url.split(/\/|\?/);
     for (const split of splitUrl) {
       if (isIPFS.cid(split)) {
         return {
@@ -15,12 +15,12 @@ class IpfsGatewayTools {
           cid: split,
         };
       }
-      const splitOnDot = split.split(".")[0];      
-      if(isIPFS.cid(splitOnDot)) {
+      const splitOnDot = split.split(".")[0];
+      if (isIPFS.cid(splitOnDot)) {
         return {
-          containsCid: true, 
-          cid: splitOnDot
-        }
+          containsCid: true,
+          cid: splitOnDot,
+        };
       }
     }
 
@@ -32,13 +32,9 @@ class IpfsGatewayTools {
 
   //gets
   convertToDesiredGateway = (sourceUrl, desiredGatewayPrefix) => {
-    const results = this.containsCID(sourceUrl);    
+    const results = this.containsCID(sourceUrl);
     if (results.containsCid !== true) {
       throw new Error("url does not contain CID");
-    }
-
-    if(isIPFS.cid(results.cid)) {
-      return `${desiredGatewayPrefix}/ipfs/${results.cid}`
     }
 
     const splitUrl = sourceUrl.split(results.cid);
