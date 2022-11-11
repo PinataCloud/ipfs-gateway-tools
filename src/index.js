@@ -1,5 +1,4 @@
 const isIPFS = require("is-ipfs");
-const http = require('url');
 
 class IpfsGatewayTools {
   constructor() {}
@@ -57,6 +56,7 @@ class IpfsGatewayTools {
     //case 4 - the subdomain https://cid.ipfs.<gateway-host>.tld/path/to/resource path (eg. https://cid.ipfs.dweb.link)
     if (sourceUrl.includes(`https://${results.cid}.ipfs.`)) {
       let pathname = new URL(sourceUrl).pathname;
+      if (pathname == "/") pathname = "";
       return `${desiredGatewayPrefix}/ipfs/${results.cid}${pathname}`
     }
 
