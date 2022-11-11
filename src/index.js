@@ -53,6 +53,13 @@ class IpfsGatewayTools {
       return `${desiredGatewayPrefix}/ipns/${results.cid}${splitUrl[1]}`;
     }
 
+    //case 4 - the subdomain https://cid.ipfs.<gateway-host>.tld/path/to/resource path (eg. https://cid.ipfs.dweb.link)
+    if (sourceUrl.includes(`https://${results.cid}.ipfs.`)) {
+      let pathname = new URL(sourceUrl).pathname;
+      if (pathname == "/") pathname = "";
+      return `${desiredGatewayPrefix}/ipfs/${results.cid}${pathname}`
+    }
+
     //this is the fallback if no supported patterns are provided
     throw new Error(
       "unsupported URL pattern, please submit a github issue with the URL utilized"

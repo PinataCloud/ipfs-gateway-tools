@@ -51,6 +51,8 @@ The IPFS gateway toolkit currently contains the following functions:
   - `https://example-gateway.com/ipfs/CID`
   - `https://example-gateway.com/ipfs/CID/exampleFile.json`
   - `https://example-gateway.com/ipns/CID`
+  - `https://CID.ipfs.example-gateway.com`
+  - `https://CID.ipfs.example-gateway.com/exampleFile.json`
 
 #### Response
 
@@ -75,6 +77,8 @@ The IPFS gateway toolkit currently contains the following functions:
   - `https://example-gateway.com/ipfs/CID`
   - `https://example-gateway.com/ipfs/CID/exampleFile.json`
   - `https://example-gateway.com/ipns/CID`
+  - `https://CID.ipfs.example-gateway.com`
+  - `https://CID.ipfs.example-gateway.com/exampleFile.json`
 - `desiredGatewayPrefix` - The desired gateway you want to convert your source URL to. A few examples of this would be:
   - `https://mygateway.mypinata.cloud`
   - `https://ipfs.io`
